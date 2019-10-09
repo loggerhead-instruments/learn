@@ -12,14 +12,14 @@ import numpy as np
 
 path = '/Users/dmann/w/learn/wavStats/'
 
-fileName = 'FMsweep.wav'
-#s, y = wav.read(path + fileName)
+fileName = 'blue.wav'
+s, y = wav.read(path + fileName)
 
 # example with y as full-scale impulse
 #y = np.array([0,32768,0])
 
 # hydrophone calibration dBV re 1uPascal
-hydroCal = -180
+hydroCal = -240
 
 # board gain dB full-scale referenced to 1.0 V
 boardGain = 2.0
