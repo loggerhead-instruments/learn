@@ -10,6 +10,14 @@ import matplotlib.pyplot as plt
 import scipy.io.wavfile as wav
 import numpy as np
 
+path = '/Users/dmann/w/learn/wavStats/'
+
+fileName = 'FMsweep.wav'
+#s, y = wav.read(path + fileName)
+
+# example with y as full-scale impulse
+#y = np.array([0,32768,0])
+
 # hydrophone calibration dBV re 1uPascal
 hydroCal = -180
 
@@ -21,16 +29,11 @@ sensitivityDb = hydroCal + boardGain
 # calculate V / uPa
 sensitivityLinear = np.power(10, sensitivityDb/20.0)
 
-path = '/Users/dmann/w/learn/wavStats/'
-
-fileName = 'FMsweep.wav'
-s, y = wav.read(path + fileName)
-
 # scale to +/- 1.0
 y = y / 32768.0
 
 # remove DC offset (optional)
-y = y - np.mean(y)
+#y = y - np.mean(y)
 
 # scale to Pascals
 yMicroPascals = y / sensitivityLinear
