@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import scipy.io.wavfile as wav
 import numpy as np
 
+
 path = '/Users/dmann/w/learn/wavStats/'
 
 fileName = 'blue.wav'
@@ -18,12 +19,15 @@ s, y = wav.read(path + fileName)
 # example with y as full-scale impulse
 #y = np.array([0,32768,0])
 
+# USER SETTINGS
 # hydrophone calibration dBV re 1uPascal
 hydroCal = -240
 
 # board gain dB full-scale referenced to 1.0 V
 boardGain = 2.0
 
+
+# CALCULATIONS
 sensitivityDb = hydroCal + boardGain
 
 # calculate V / uPa
@@ -48,6 +52,9 @@ print()
 print('Peak dB re 1uPa')
 print(peakDb)
 
-plt.plot(yPascals)
+# create time scale
+t = np.arange(len(yPascals)) / s
+plt.plot(t, yPascals)
 plt.ylabel('Pa')
+plt.xlabel('Time (s)')
 plt.show()
