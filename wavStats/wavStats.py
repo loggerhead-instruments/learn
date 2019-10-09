@@ -33,7 +33,7 @@ sensitivityLinear = np.power(10, sensitivityDb/20.0)
 y = y / 32768.0
 
 # remove DC offset (optional)
-#y = y - np.mean(y)
+y = y - np.mean(y)
 
 # scale to Pascals
 yMicroPascals = y / sensitivityLinear
